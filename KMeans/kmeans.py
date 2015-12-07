@@ -49,7 +49,10 @@ for i in clusters:
 ERR = math.inf #Errore totale - utile per sapere quando finire
 finished=False
 step = 0
+c = graphics.Graphics_Cluster(points)
+c.create_graph()
 while(not finished):
+    graph = graphics.Graphics_Cluster(points)
     print("STEP " + str(step))
     newERR=0 #Nuovo Errore totale.
     #Attribuire Cluster
@@ -68,6 +71,8 @@ while(not finished):
         tempCentroid.setX(mean([elem.getX() for elem in tempList]))
         tempCentroid.setY(mean([elem.getY() for elem in tempList]))
         print("Centro di Massa: " + str(tempCentroid)) #Stampa il centro di massa
+
+        graph.add_centroid(tempCentroid.getX(),tempCentroid.getY(),i)
         tempDistance = math.inf
         #Calcola il punto più vicino nel cluster al centro di massa
         for elem in tempList:
@@ -87,6 +92,7 @@ while(not finished):
         finished=True
 
     step+=1
-    c = graphics.Graphics_Cluster(points)
+    graph.set_points(points)
+    graph.create_graph()
 
 
