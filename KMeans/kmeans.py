@@ -3,6 +3,7 @@ import cluster
 import math
 import random
 from statistics import mean
+import graphics
 points=[]
 centroids=[]
 clusters = []
@@ -20,7 +21,10 @@ while True:
 while True:
     try:
         numberOfClusters = int(input("How much clusters?"))
-        break
+        if (numberOfClusters>= 1 and numberOfClusters <= 5):
+            break
+        else:
+            print("Just 1 to 5 Clusters permitted")
     except ValueError:
         print("Not a number")
 
@@ -28,6 +32,8 @@ while True:
 #Step 0 - Creazione Punti
 for i in range(numberOfPoints):
     points.append(point.Point())
+
+
 
 #Step 0 - Creazione Clusters con Centroidi casuali
 for i in range(numberOfClusters):
@@ -81,7 +87,6 @@ while(not finished):
         finished=True
 
     step+=1
-    input("Enter for next step")
-
+    c = graphics.Graphics_Cluster(points)
 
 

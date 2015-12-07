@@ -1,8 +1,9 @@
 import random
 class Point:
     def __init__(self, NULL='null'):
-        self.x=random.randint(0,10)
-        self.y=random.randint(0,10)
+
+        self.x=(random.random())*10.
+        self.y=(random.random())*10.
         self.i=NULL
     def __str__(self):
         if(self.i=='null'):
